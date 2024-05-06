@@ -1,0 +1,1 @@
+{"success": true, "data": [{"type": "correct", "user": {"id": 359, "name": "Haruna"}, "challenge_id": 79, "date": "2024-04-27T13:05:51.632716+00:00", "id": 2485, "challenge": {"id": 79, "name": "jscripting", "value": 362, "category": "web"}, "team": {"id": 203, "name": "blackpinker"}}], "meta": {"count": 1}}

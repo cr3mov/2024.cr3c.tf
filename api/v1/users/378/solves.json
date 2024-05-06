@@ -1,0 +1,1 @@
+{"success": true, "data": [{"type": "correct", "user": {"id": 378, "name": "onetwothree"}, "challenge_id": 76, "date": "2024-04-26T13:57:18.912103+00:00", "id": 598, "challenge": {"id": 76, "name": "warmup", "value": 65, "category": "rev"}, "team": {"id": 213, "name": "Big Beef Bois"}}], "meta": {"count": 1}}

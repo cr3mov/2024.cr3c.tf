@@ -1,0 +1,1 @@
+{"success": true, "data": [{"type": "correct", "user": {"id": 664, "name": "1"}, "challenge_id": 65, "date": "2024-04-26T13:59:23.468168+00:00", "id": 611, "challenge": {"id": 65, "name": "memo-service", "value": 145, "category": "pwn"}, "team": {"id": 395, "name": "ThuDucGang"}}], "meta": {"count": 1}}

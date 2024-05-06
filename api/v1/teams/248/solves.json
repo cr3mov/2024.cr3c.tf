@@ -1,0 +1,1 @@
+{"success": true, "data": [{"type": "correct", "user": {"id": 432, "name": "NMG"}, "challenge_id": 59, "date": "2024-04-26T17:51:25.223349+00:00", "id": 1605, "challenge": {"id": 59, "name": "spurdanity-check", "value": 1, "category": "ppc"}, "team": {"id": 248, "name": "NMG"}}], "meta": {"count": 1}}

@@ -1,0 +1,1 @@
+{"success": true, "data": [{"type": "correct", "user": {"id": 345, "name": "ex3x"}, "challenge_id": 54, "date": "2024-04-27T00:02:59.427889+00:00", "id": 2025, "challenge": {"id": 54, "name": "sanitycheck", "value": 1, "category": "misc"}, "team": {"id": 195, "name": "ex3x"}}], "meta": {"count": 1}}

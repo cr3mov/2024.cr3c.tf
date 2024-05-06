@@ -1,0 +1,1 @@
+{"success": true, "data": [{"type": "correct", "user": {"id": 49, "name": "ploi12"}, "challenge_id": 59, "date": "2024-04-26T15:39:34.277065+00:00", "id": 1183, "challenge": {"id": 59, "name": "spurdanity-check", "value": 1, "category": "ppc"}, "team": {"id": 29, "name": "CTF - ?"}}], "meta": {"count": 1}}

@@ -1,0 +1,1 @@
+{"success": true, "data": [{"type": "correct", "user": {"id": 1047, "name": "oskarklimczuk"}, "challenge_id": 87, "date": "2024-04-27T15:23:34.644226+00:00", "id": 2642, "challenge": {"id": 87, "name": "survey", "value": 1, "category": "misc"}, "team": {"id": 118, "name": "Byte-sized Pierogi"}}], "meta": {"count": 1}}

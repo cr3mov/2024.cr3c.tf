@@ -1,0 +1,1 @@
+{"success": true, "data": [{"type": "correct", "user": {"id": 590, "name": "PaloAlto"}, "challenge_id": 54, "date": "2024-04-26T13:01:11.981760+00:00", "id": 17, "challenge": {"id": 54, "name": "sanitycheck", "value": 1, "category": "misc"}, "team": {"id": 346, "name": "The Muslim Brothers"}}], "meta": {"count": 1}}

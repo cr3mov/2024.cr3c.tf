@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>cr3 CTF</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="/themes/core-beta/static/img/favicon.ico?d=e2c5c1e1" type="image/x-icon">
+
+  <style>
+    /* cyrillic-ext */
+    @font-face {
+      font-family: 'Raleway';
+      font-style: italic;
+      font-weight: 100 900;
+      font-display: swap;
+      src: url(https://fonts.gstatic.com/s/raleway/v29/1Ptsg8zYS_SKggPNyCg4QIFqPfE.woff2) format('woff2');
+      unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+    }
+    /* cyrillic */
+    @font-face {
+      font-family: 'Raleway';
+      font-style: italic;
+      font-weight: 100 900;
+      font-display: swap;
+      src: url(https://fonts.gstatic.com/s/raleway/v29/1Ptsg8zYS_SKggPNyCg4SYFqPfE.woff2) format('woff2');
+      unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+    }
+    /* vietnamese */
+    @font-face {
+      font-family: 'Raleway';
+      font-style: italic;
+      font-weight: 100 900;
+      font-display: swap;
+      src: url(https://fonts.gstatic.com/s/raleway/v29/1Ptsg8zYS_SKggPNyCg4QoFqPfE.woff2) format('woff2');
+      unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+    }
+    /* latin-ext */
+    @font-face {
+      font-family: 'Raleway';
+      font-style: italic;
+      font-weight: 100 900;
+      font-display: swap;
+      src: url(https://fonts.gstatic.com/s/raleway/v29/1Ptsg8zYS_SKggPNyCg4Q4FqPfE.woff2) format('woff2');
+      unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+    /* latin */
+    @font-face {
+      font-family: 'Raleway';
+      font-style: italic;
+      font-weight: 100 900;
+      font-display: swap;
+      src: url(https://fonts.gstatic.com/s/raleway/v29/1Ptsg8zYS_SKggPNyCg4TYFq.woff2) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    /* cyrillic-ext */
+    @font-face {
+      font-family: 'Raleway';
+      font-style: normal;
+      font-weight: 100 900;
+      font-display: swap;
+      src: url(https://fonts.gstatic.com/s/raleway/v29/1Ptug8zYS_SKggPNyCAIT5lu.woff2) format('woff2');
+      unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+    }
+    /* cyrillic */
+    @font-face {
+      font-family: 'Raleway';
+      font-style: normal;
+      font-weight: 100 900;
+      font-display: swap;
+      src: url(https://fonts.gstatic.com/s/raleway/v29/1Ptug8zYS_SKggPNyCkIT5lu.woff2) format('woff2');
+      unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+    }
+    /* vietnamese */
+    @font-face {
+      font-family: 'Raleway';
+      font-style: normal;
+      font-weight: 100 900;
+      font-display: swap;
+      src: url(https://fonts.gstatic.com/s/raleway/v29/1Ptug8zYS_SKggPNyCIIT5lu.woff2) format('woff2');
+      unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+    }
+    /* latin-ext */
+    @font-face {
+      font-family: 'Raleway';
+      font-style: normal;
+      font-weight: 100 900;
+      font-display: swap;
+      src: url(https://fonts.gstatic.com/s/raleway/v29/1Ptug8zYS_SKggPNyCMIT5lu.woff2) format('woff2');
+      unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+    /* latin */
+    @font-face {
+      font-family: 'Raleway';
+      font-style: normal;
+      font-weight: 100 900;
+      font-display: swap;
+      src: url(https://fonts.gstatic.com/s/raleway/v29/1Ptug8zYS_SKggPNyC0ITw.woff2) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+  </style>
+  <link rel="preload" href="https://fonts.gstatic.com/s/raleway/v29/1Ptug8zYS_SKggPNyC0ITw.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  
+
+  
+  <link rel="stylesheet" href="/themes/core-beta/static/assets/main.8fbfb021.css">
+  
+
+  
+
+  <script type="text/javascript">
+
+    window.init = {
+      'urlRoot': "",
+      'csrfNonce': "073bf558fbc98caf26ad8109617b6ce1d790d9860810e5a6cb2dc942b5bef504",
+      'userMode': "teams",
+      'userId': 0,
+      'userName': null,
+      'userEmail': null,
+      'teamId': null,
+    'teamName': null,
+    'start': 1714136400,
+    'end': 1714266000,
+    'themeSettings': null,
+    'eventSounds': [
+      "/themes/core/static/sounds/notification.webm",
+      "/themes/core/static/sounds/notification.mp3",
+    ],
+      }
+  </script>
+
+  
+<style>
+    .main {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        grid-gap: 56px;
+        padding-top: 100px;
+        padding-bottom: 46px;
+    }
+    .container_platform {
+        width: 100%;
+        max-width: 1208px;
+        padding:0;
+    }
+    .modal__confirmation_buttons {
+        margin-top: 16px;
+        display: flex;
+        justify-content: flex-end;
+        grid-gap: 14px;
+    }
+    .confirmation_button {
+        cursor: pointer;
+        transition: all 0.5s;
+        padding: 11px 14px;
+        font-size: 15px;
+        font-weight: 600;
+        line-height: 20px;
+        border-radius: 8px;
+        color: #fff;
+    }
+    .button_yes {
+        background: #F15048;
+    }
+    .button_yes:hover {
+        background: #E7362B;
+    }
+    .button_not {
+        background: #222631;
+    }
+    .button_not:hover {
+        background: #333846;
+    }
+    .modal-dialog {
+        box-sizing: border-box;
+        padding: 28px 32px 32px 32px;
+        background: #171B26;
+        border-radius: 12px;
+    }
+    .modal-footer {
+        margin-top: 16px;
+        display: flex;
+        align-items: center;
+        grid-gap: 14px;
+    }
+    [x-cloak] {
+        display: none !important;
+    }
+    @media all and (max-width: 1600px) {
+        .container_platform {
+            max-width: 890px !important;
+        }
+    }
+    @media all and (max-width: 1440px) {
+        .container_platform {
+            max-width: 828px !important;
+        }
+        .modal-dialog {
+            padding: 22px 24px 24px 24px;
+            border-radius: 10px;
+        }
+    }
+    @media all and (max-width: 1280px) {
+        .container_platform {
+            max-width: 766px !important;
+        }
+    }
+    @media all and (max-width: 1024px) {
+        .container_platform {
+            max-width: 704px !important;
+        }
+    }
+    @media all and (max-width: 960px) {
+        .container_platform {
+            max-width: 960px !important;
+            padding: 0 30px;
+        }
+    }
+    @media all and (max-width: 600px) {
+        .main {
+            padding-top: 74px;
+            padding-bottom: 24px;
+        }
+        .container_platform {
+            max-width: 960px !important;
+            padding: 0;
+        }
+        .modal-dialog {
+            padding: 16px 18px 18px 18px;
+        }
+    }
+</style>
+</head>
+
+<body class="min-h-[100dvh] w-full bg-[#0D111D] text-white">
+  
+
+  <main role="main" class="main">
+    
+    
+<style>
+    .login {
+        width: 100%;
+    }
+    .login_item {
+        height: 100vh;
+        margin: 0;
+        padding: 48px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .svg__logo {
+        cursor: pointer;
+    }
+    .login_title {
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 28px;
+        text-align: center;
+    }
+    .login_subtitle {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 20px;
+        text-align: center;
+        color: #7A7D83;
+        margin-bottom: 24px;
+    }
+
+    .go_to_reg {
+        display: flex;
+        align-items: center;
+        justify-content: right;
+    }
+
+    .login_block {
+        height: 100%;
+    }
+
+    .login_go_to_forgot_password {
+        color: #F15048;
+    }
+
+    .login__footer {
+        display: grid;
+        grid-gap: 12px;
+    }
+    .login__footer_title {
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 22px;
+        text-align: left;
+        color: #FFF;
+    }
+    .login__footer_subtitle {
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 20px;
+        text-align: left;
+        color: #7A7D83;
+    }
+    .block__login {
+        max-width: 520px;
+        width: 100%;
+    }
+    @media all and (max-width: 1440px) {
+        .login_title {
+            font-size: 18px;
+        }
+        .login_subtitle {
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .login__footer_title {
+            font-size: 16px;
+            line-height: 20px;
+        }
+        .login__footer_subtitle {
+            font-size: 15px;
+            line-height: 18px;
+        }
+    }
+    @media all and (max-width: 1024px) {
+        .block__login_info {
+            display: none;
+        }
+    }
+</style>
+  <div class="login p-0 mw-100 position-absolute top-0">
+    <div class="row login m-0">
+      <div class="col login_item block__login_info">
+        <a href="/">
+          <svg class="svg__logo" width="102" height="34" viewBox="0 0 102 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_3767_19834)">
+              <circle cx="17" cy="17" r="16.5" fill="#F15048" stroke="#F15048"/>
+              <mask id="mask0_3767_19834" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="34" height="34">
+                <circle cx="17" cy="17" r="16.5" fill="#FF5A5A" stroke="#F15048"/>
+              </mask>
+              <g mask="url(#mask0_3767_19834)">
+                <path d="M18.0474 25.1586C16.6658 24.8264 15.8036 23.9354 15.746 22.5114C15.7179 21.8123 15.109 21.896 14.5555 21.896C14.0146 21.896 10.9876 21.9119 10.4513 21.896C10.3784 21.2708 10.4038 21.4894 10.262 20.2699C10.14 19.216 10.1618 19.4047 10.097 18.8434C10.4689 18.8235 14.2876 18.7943 14.5304 18.7943C15.1086 18.7943 15.2426 18.5767 15.1998 18.0411C15.0244 15.981 14.8905 13.9081 14.7593 11.8403C14.7272 11.3446 14.4835 11.0382 13.9828 11.0678C12.5851 11.1631 11.1901 11.306 9.79512 11.4386C9.33457 11.4811 9.3078 11.7939 9.34662 12.1442C9.54208 13.8875 9.72818 15.6308 9.92765 17.3716C10.2543 20.2196 10.5863 23.0659 10.9237 25.9105C10.9556 26.1811 11.5406 31.1105 11.8527 33.6141C11.9741 34.5874 11.6033 33.9873 11.4742 33.9992C10.8048 34.061 10.1354 34.1125 9.47675 34.1872C9.23206 34.2145 8.90213 34.4479 8.49125 32.146C8.22172 29.7902 7.80791 26.4316 7.79229 26.2916C7.4808 23.4642 7.16842 20.6376 6.85514 17.8119C6.56596 15.2188 6.28348 12.6257 5.98092 10.0339C5.87917 9.16479 5.98092 8.98454 6.90869 8.86609C9.02665 8.59184 11.1419 8.27768 13.2693 8.09356C14.2219 8.03587 15.1782 8.10739 16.1102 8.30601C17.5387 8.57768 18.2522 9.59998 18.0501 10.9918C17.9523 11.6536 18.1625 11.9175 18.8359 11.9047C20.6848 11.8699 22.5337 11.8467 24.3825 11.812C25.163 11.7965 25.9422 11.745 26.7227 11.7463C27.5702 11.7463 27.8567 12.1596 27.5367 12.8987C26.8526 14.4759 26.1818 16.0583 25.4509 17.6162C25.1697 18.2136 25.2286 18.6668 25.6075 19.2037C26.6424 20.6741 27.6157 22.1805 28.6184 23.6753C29.1272 24.4376 28.9518 24.8998 28.0334 25.0363C24.5432 25.5495 21.5041 25.9948 18.0474 25.1586ZM23.428 22.6157C23.9795 22.5732 24.084 22.344 23.7787 21.8998C23.2767 21.1685 22.7679 20.4411 22.2324 19.7329C22.0048 19.4547 21.8629 19.1207 21.8229 18.7688C21.7829 18.4169 21.8464 18.0613 22.0062 17.7424C22.3195 17.0368 22.6408 16.3351 22.9433 15.6231C23.1816 15.054 23.0424 14.9085 22.3998 14.9149C21.1788 14.9265 19.9578 14.9317 18.7369 14.9021C18.2656 14.8905 18.0675 15.0476 18.1157 15.4905C18.3272 17.4862 18.5387 19.481 18.7503 21.4749C18.8172 22.102 19.1439 22.5127 19.8347 22.5706C21.0455 22.6732 22.2163 22.709 23.428 22.6157Z" fill="white" stroke="#F15048" stroke-width="0.8"/>
+              </g>
+              <path d="M9.67715 19.2266H10.6421L10.9008 21.5039H9.65234L9.67715 19.2266Z" fill="white"/>
+              <path d="M94.0312 22.6725V11.3125H101.663V13.2485H96.2393V16.1765H100.751V17.9685H96.2393V22.6725H94.0312Z" fill="white"/>
+              <path d="M92.624 13.2485H88.992V22.6725H86.8V13.2485H83.168V11.3125H92.624V13.2485Z" fill="white"/>
+              <path d="M72.4688 16.912C72.4688 16.2187 72.5914 15.5414 72.8368 14.88C73.0928 14.208 73.4608 13.6 73.9408 13.056C74.4208 12.5014 75.0074 12.064 75.7008 11.744C76.3941 11.4134 77.1834 11.248 78.0688 11.248C79.1141 11.248 80.0154 11.4774 80.7727 11.936C81.5407 12.3947 82.1114 12.992 82.4848 13.728L80.7888 14.896C80.5968 14.4694 80.3461 14.1334 80.0367 13.888C79.7274 13.632 79.3967 13.456 79.0447 13.36C78.6927 13.2534 78.3461 13.2 78.0048 13.2C77.4501 13.2 76.9647 13.312 76.5487 13.536C76.1434 13.76 75.8021 14.0534 75.5247 14.416C75.2474 14.7787 75.0394 15.184 74.9007 15.632C74.7727 16.08 74.7087 16.528 74.7087 16.976C74.7087 17.4774 74.7887 17.9627 74.9487 18.432C75.1087 18.8907 75.3327 19.3014 75.6207 19.664C75.9194 20.016 76.2714 20.2987 76.6767 20.512C77.0927 20.7147 77.5461 20.816 78.0367 20.816C78.3887 20.816 78.7461 20.7574 79.1088 20.64C79.4714 20.5227 79.8074 20.336 80.1168 20.08C80.4261 19.824 80.6661 19.4934 80.8367 19.088L82.6448 20.128C82.4208 20.6934 82.0528 21.1734 81.5408 21.568C81.0394 21.9627 80.4741 22.2614 79.8448 22.464C79.2154 22.6667 78.5914 22.768 77.9727 22.768C77.1621 22.768 76.4208 22.6027 75.7488 22.272C75.0768 21.9307 74.4954 21.4827 74.0047 20.928C73.5247 20.3627 73.1461 19.7334 72.8687 19.04C72.6021 18.336 72.4688 17.6267 72.4688 16.912Z" fill="white"/>
+              <path d="M63.1209 22.784C62.5129 22.784 61.9582 22.7093 61.4569 22.56C60.9662 22.4 60.5342 22.176 60.1609 21.888C59.7982 21.5893 59.5102 21.2373 59.2969 20.832L60.4489 19.376C60.5555 19.6106 60.7262 19.84 60.9609 20.064C61.1955 20.288 61.4889 20.4693 61.8409 20.608C62.1929 20.7466 62.5929 20.816 63.0409 20.816C63.4782 20.816 63.8569 20.752 64.1769 20.624C64.4969 20.496 64.7422 20.32 64.9129 20.096C65.0942 19.8613 65.1849 19.5786 65.1849 19.248C65.1849 18.896 65.0729 18.5973 64.8489 18.352C64.6355 18.1066 64.3155 17.92 63.8889 17.792C63.4622 17.664 62.9395 17.6 62.3209 17.6H61.7929V16H62.3529C63.1209 16 63.7342 15.8666 64.1929 15.6C64.6622 15.3333 64.8969 14.9546 64.8969 14.464C64.8969 14.1653 64.8169 13.9093 64.6569 13.696C64.4969 13.472 64.2835 13.3066 64.0169 13.2C63.7502 13.0826 63.4569 13.024 63.1369 13.024C62.6035 13.024 62.1289 13.152 61.7129 13.408C61.3075 13.6533 60.9982 13.9733 60.7849 14.368L59.3929 12.816C59.6275 12.4746 59.9475 12.1866 60.3529 11.952C60.7582 11.7066 61.2115 11.5146 61.7129 11.376C62.2249 11.2373 62.7529 11.168 63.2969 11.168C64.0542 11.168 64.7262 11.3013 65.3129 11.568C65.8995 11.824 66.3582 12.176 66.6889 12.624C67.0195 13.072 67.1849 13.584 67.1849 14.16C67.1849 14.5866 67.0942 14.976 66.9129 15.328C66.7422 15.68 66.4969 15.9733 66.1769 16.208C65.8569 16.4426 65.4782 16.6133 65.0409 16.72C65.5102 16.7946 65.9209 16.9706 66.2729 17.248C66.6355 17.5146 66.9129 17.856 67.1049 18.272C67.3075 18.6773 67.4089 19.12 67.4089 19.6C67.4089 20.272 67.2169 20.8426 66.8329 21.312C66.4595 21.7813 65.9475 22.144 65.2969 22.4C64.6569 22.656 63.9315 22.784 63.1209 22.784Z" fill="white"/>
+              <path d="M58.5506 16.1438C57.8999 16.1438 57.3186 16.2718 56.8066 16.5278C56.2946 16.7731 55.9266 17.1304 55.7026 17.5998V22.6718H53.5586V14.2878H55.5266V16.0798C55.8253 15.5038 56.2039 15.0504 56.6626 14.7198C57.1213 14.3891 57.6066 14.2078 58.1186 14.1758C58.2359 14.1758 58.3266 14.1758 58.3906 14.1758C58.4546 14.1758 58.5079 14.1811 58.5506 14.1918V16.1438Z" fill="white"/>
+              <path d="M48.432 22.8325C47.7493 22.8325 47.136 22.7205 46.592 22.4965C46.048 22.2619 45.584 21.9419 45.2 21.5365C44.816 21.1205 44.5173 20.6512 44.304 20.1285C44.1013 19.6059 44 19.0565 44 18.4805C44 17.6912 44.176 16.9712 44.528 16.3205C44.8907 15.6592 45.4027 15.1312 46.064 14.7365C46.7253 14.3419 47.5093 14.1445 48.416 14.1445C49.3227 14.1445 50.1013 14.3419 50.752 14.7365C51.4027 15.1312 51.888 15.6485 52.208 16.2885L50.112 16.9285C49.9307 16.6192 49.6907 16.3845 49.392 16.2245C49.0933 16.0539 48.7627 15.9685 48.4 15.9685C47.9947 15.9685 47.6213 16.0752 47.28 16.2885C46.9493 16.4912 46.688 16.7845 46.496 17.1685C46.304 17.5419 46.208 17.9792 46.208 18.4805C46.208 18.9712 46.304 19.4085 46.496 19.7925C46.6987 20.1659 46.9653 20.4645 47.296 20.6885C47.6267 20.9019 47.9947 21.0085 48.4 21.0085C48.656 21.0085 48.896 20.9659 49.12 20.8805C49.3547 20.7952 49.5627 20.6779 49.744 20.5285C49.9253 20.3792 50.0587 20.2085 50.144 20.0165L52.24 20.6565C52.048 21.0725 51.7653 21.4459 51.392 21.7765C51.0293 22.1072 50.5973 22.3685 50.096 22.5605C49.6053 22.7419 49.0507 22.8325 48.432 22.8325Z" fill="white"/>
+            </g>
+            <defs>
+              <clipPath id="clip0_3767_19834">
+                <rect width="102" height="34" fill="white"/>
+              </clipPath>
+            </defs>
+          </svg>
+        </a>
+        <div class="login__footer">
+          <div class="login__footer_title">
+            "A flat chest is a status symbol!"
+          </div>
+          <div class="login__footer_subtitle">
+            ― Konata Izumi
+          </div>
+        </div>
+      </div>
+      <div class="col login_item bg-[#171B26]">
+        <div>
+  
+
+  
+</div>
+
+        
+
+        <div class="go_to_reg">
+          <a href="/login" class="py-[10px] px-[14px]  font-[600] text-[15px] leading-[22px] bg-[#F15048] hover:bg-[#E7362B] duration-200 hover:text-white rounded-md">Login</a>
+        </div>
+
+        <div class="d-flex align-items-center justify-content-center login_block">
+          <div class="flex-grow-1 d-flex justify-content-center">
+            <div class="block__login">
+              <div class="login_title">
+                Registration
+              </div>
+              <div class="login_subtitle">
+                Enter username, email and password
+              </div>
+              
+
+              
+              <form method="post" accept-charset="utf-8" autocomplete="off" role="form">
+
+                <div class="mb-3">
+                  <b><label class="form-label" for="name">User Name</label></b>
+                  <input class="form-control" id="name" name="name" placeholder="Enter username" required type="text" value="">
+                </div>
+
+                <div class="mb-3">
+                  <b><label class="form-label" for="email">Email</label></b>
+                  <input class="form-control" id="email" name="email" placeholder="Enter email" required type="email" value="">
+                </div>
+
+                <div class="mb-3">
+                  <b><label class="form-label" for="password">Password</label></b>
+                  <input class="form-control" id="password" name="password" placeholder="Enter password" required type="password" value="">
+                </div>
+
+                <input id="nonce" name="nonce" type="hidden" value="073bf558fbc98caf26ad8109617b6ce1d790d9860810e5a6cb2dc942b5bef504">
+
+                
+
+                <div class="d-flex flex-column">
+                  <div class="">
+                      <input class="button_default h-captcha" id="_submit" name="_submit" type="submit" value="Submit"
+                             data-sitekey="ce1a673a-708d-492b-9dc4-47e7577550ae" data-callback="onSubmit">
+                  </div>
+                </div>
+
+                
+              </form>
+              
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+<script>
+    function onSubmit(token) {
+        const form = document.querySelector("form")
+        form.submit();
+    }
+</script>
+
+    <script>
+  let url_sidebar = window.location;
+  let sidebar = document.getElementById('sidebar');
+
+  if (sidebar) {
+      let url_active_page = url_sidebar.pathname.split('/')[1];
+      document.getElementById(url_active_page).classList.add('sidebar_item__active');
+  }
+</script>
+
+<script defer type="module" src="/themes/core-beta/static/assets/index.4a8d564d.js"></script><script defer type="module" src="/themes/core-beta/static/assets/notifications.cd55b720.js"></script>
+
+<script>
+  let url = window.location;
+  let navbar = document.getElementById('navbar');
+  if (navbar) {
+      if (url.pathname !== '/') navbar.style.backgroundColor = '#171B26';
+  }
+
+  let dropDownMenu = document.getElementById('drop_down_menu');
+  let svgDropDown = document.getElementById('svg_drop_down');
+  let modalExit = document.getElementById('modal_exit');
+
+  headerInfoUser.onclick = () => {
+    if ( dropDownMenu.classList.value === 'drop_down_menu' && svgDropDown.classList.value === 'svg svg_drop_down' ) {
+      dropDownMenu.classList.add('drop_down_menu__show');
+      svgDropDown.classList.add('svg_rotate');
+    }else {
+      dropDownMenu.classList.remove('drop_down_menu__show');
+      svgDropDown.classList.remove('svg_rotate');
+    }
+  }
+
+  exit.onclick = () => {
+    modalExit.classList.add('modal__block_open');
+  }
+
+  modal_exit.onclick = (e) => {
+    if ( e.target.classList.value === 'modal__block_exit modal__block_open' )
+      modalExit.classList.remove('modal__block_open');
+  }
+
+  closeModalExit.onclick = (e) => {
+    if ( e.target.classList.value === 'confirmation_button button_not' )
+      modalExit.classList.remove('modal__block_open');
+  }
+
+  document.body.addEventListener('click', (event) => {
+    if ( event.target.classList.value !== 'block__info_name' ) {
+      dropDownMenu.classList.remove('drop_down_menu__show');
+      svgDropDown.classList.remove('svg_rotate');
+    }
+  })
+</script>
+<script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+  </main>
+
+  
+  <style>
+    .toast__modal {
+        position: fixed;
+        top: 100px;
+        right: 32px;
+        z-index: 11;
+    }
+    .toast__container {
+        padding: 16px 18px 18px 18px;
+        background: #222631;
+        border-radius: 8px;
+    }
+    .toast_header {
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 20px;
+        color: #fff;
+        display: flex;
+        align-items: flex-start;
+        height: 34px;
+        border-bottom: 1px solid #666970;
+    }
+    .toast_body {
+        margin-top: 14px;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 22px;
+        color:#fff;
+    }
+    @media all and (max-width: 1440px) {
+        .toast__modal {
+            top: 100px;
+            right: 32px;
+            z-index: 11;
+        }
+        .toast__container {
+            padding: 12px 14px 14px 14px;
+        }
+        .toast_header {
+            font-size: 15px;
+            line-height: 18px;
+            height: 30px;
+        }
+        .toast_body {
+            margin-top: 12px;
+            font-size: 15px;
+            line-height: 20px;
+        }
+    }
+</style>
+
+<div x-data>
+  <div class="toast__modal">
+    <div x-ref="toast" class="toast toast__container" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast_header">
+        <span class="me-auto" x-text="$store.toast.title"></span>
+        <button type="button" data-bs-dismiss="toast">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 1C5.92487 1 1 5.92487 1 12C1 18.0751 5.92487 23 12 23C18.0751 23 23 18.0751 23 12C23 5.92487 18.0751 1 12 1ZM9.70711 8.29289C9.31658 7.90237 8.68342 7.90237 8.29289 8.29289C7.90237 8.68342 7.90237 9.31658 8.29289 9.70711L10.5858 12L8.29289 14.2929C7.90237 14.6834 7.90237 15.3166 8.29289 15.7071C8.68342 16.0976 9.31658 16.0976 9.70711 15.7071L12 13.4142L14.2929 15.7071C14.6834 16.0976 15.3166 16.0976 15.7071 15.7071C16.0976 15.3166 16.0976 14.6834 15.7071 14.2929L13.4142 12L15.7071 9.70711C16.0976 9.31658 16.0976 8.68342 15.7071 8.29289C15.3166 7.90237 14.6834 7.90237 14.2929 8.29289L12 10.5858L9.70711 8.29289Z" fill="#666970"/>
+          </svg>
+        </button>
+      </div>
+      <div class="toast_body" x-html="$store.toast.html">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div x-data>
+  <div class="modal fade" x-ref="modal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" x-text="$store.modal.title"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p x-html="$store.modal.html"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Got it!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+  <script defer type="module" src="/themes/core-beta/static/assets/index.4a8d564d.js"></script>
+  
+
+  
+
+  
+</body>
+</html>
+<script>
+  if (window.location.pathname === '/') document.getElementsByClassName('container_platform')[0].style.maxWidth = "1208px";
+  else document.getElementsByClassName('container_platform')[0].style.maxWidth = "952px";
+</script>

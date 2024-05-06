@@ -1,0 +1,1711 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>cr3 CTF</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="/themes/core-beta/static/img/favicon.ico?d=0e2f3f54" type="image/x-icon">
+
+  <style>
+    /* cyrillic-ext */
+    @font-face {
+      font-family: 'Raleway';
+      font-style: italic;
+      font-weight: 100 900;
+      font-display: swap;
+      src: url(https://fonts.gstatic.com/s/raleway/v29/1Ptsg8zYS_SKggPNyCg4QIFqPfE.woff2) format('woff2');
+      unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+    }
+    /* cyrillic */
+    @font-face {
+      font-family: 'Raleway';
+      font-style: italic;
+      font-weight: 100 900;
+      font-display: swap;
+      src: url(https://fonts.gstatic.com/s/raleway/v29/1Ptsg8zYS_SKggPNyCg4SYFqPfE.woff2) format('woff2');
+      unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+    }
+    /* vietnamese */
+    @font-face {
+      font-family: 'Raleway';
+      font-style: italic;
+      font-weight: 100 900;
+      font-display: swap;
+      src: url(https://fonts.gstatic.com/s/raleway/v29/1Ptsg8zYS_SKggPNyCg4QoFqPfE.woff2) format('woff2');
+      unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+    }
+    /* latin-ext */
+    @font-face {
+      font-family: 'Raleway';
+      font-style: italic;
+      font-weight: 100 900;
+      font-display: swap;
+      src: url(https://fonts.gstatic.com/s/raleway/v29/1Ptsg8zYS_SKggPNyCg4Q4FqPfE.woff2) format('woff2');
+      unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+    /* latin */
+    @font-face {
+      font-family: 'Raleway';
+      font-style: italic;
+      font-weight: 100 900;
+      font-display: swap;
+      src: url(https://fonts.gstatic.com/s/raleway/v29/1Ptsg8zYS_SKggPNyCg4TYFq.woff2) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    /* cyrillic-ext */
+    @font-face {
+      font-family: 'Raleway';
+      font-style: normal;
+      font-weight: 100 900;
+      font-display: swap;
+      src: url(https://fonts.gstatic.com/s/raleway/v29/1Ptug8zYS_SKggPNyCAIT5lu.woff2) format('woff2');
+      unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+    }
+    /* cyrillic */
+    @font-face {
+      font-family: 'Raleway';
+      font-style: normal;
+      font-weight: 100 900;
+      font-display: swap;
+      src: url(https://fonts.gstatic.com/s/raleway/v29/1Ptug8zYS_SKggPNyCkIT5lu.woff2) format('woff2');
+      unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+    }
+    /* vietnamese */
+    @font-face {
+      font-family: 'Raleway';
+      font-style: normal;
+      font-weight: 100 900;
+      font-display: swap;
+      src: url(https://fonts.gstatic.com/s/raleway/v29/1Ptug8zYS_SKggPNyCIIT5lu.woff2) format('woff2');
+      unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+    }
+    /* latin-ext */
+    @font-face {
+      font-family: 'Raleway';
+      font-style: normal;
+      font-weight: 100 900;
+      font-display: swap;
+      src: url(https://fonts.gstatic.com/s/raleway/v29/1Ptug8zYS_SKggPNyCMIT5lu.woff2) format('woff2');
+      unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+    /* latin */
+    @font-face {
+      font-family: 'Raleway';
+      font-style: normal;
+      font-weight: 100 900;
+      font-display: swap;
+      src: url(https://fonts.gstatic.com/s/raleway/v29/1Ptug8zYS_SKggPNyC0ITw.woff2) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+  </style>
+  <link rel="preload" href="https://fonts.gstatic.com/s/raleway/v29/1Ptug8zYS_SKggPNyC0ITw.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  
+
+  
+  <link rel="stylesheet" href="/themes/core-beta/static/assets/main.8fbfb021.css">
+  
+
+  
+
+  <script type="text/javascript">
+
+    window.init = {
+      'urlRoot': "",
+      'csrfNonce': "073bf558fbc98caf26ad8109617b6ce1d790d9860810e5a6cb2dc942b5bef504",
+      'userMode': "teams",
+      'userId': 0,
+      'userName': null,
+      'userEmail': null,
+      'teamId': null,
+    'teamName': null,
+    'start': 1714136400,
+    'end': 1714266000,
+    'themeSettings': null,
+    'eventSounds': [
+      "/themes/core/static/sounds/notification.webm",
+      "/themes/core/static/sounds/notification.mp3",
+    ],
+      }
+  </script>
+
+  
+<style>
+    .main {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        grid-gap: 56px;
+        padding-top: 100px;
+        padding-bottom: 46px;
+    }
+    .container_platform {
+        width: 100%;
+        max-width: 1208px;
+        padding:0;
+    }
+    .modal__confirmation_buttons {
+        margin-top: 16px;
+        display: flex;
+        justify-content: flex-end;
+        grid-gap: 14px;
+    }
+    .confirmation_button {
+        cursor: pointer;
+        transition: all 0.5s;
+        padding: 11px 14px;
+        font-size: 15px;
+        font-weight: 600;
+        line-height: 20px;
+        border-radius: 8px;
+        color: #fff;
+    }
+    .button_yes {
+        background: #F15048;
+    }
+    .button_yes:hover {
+        background: #E7362B;
+    }
+    .button_not {
+        background: #222631;
+    }
+    .button_not:hover {
+        background: #333846;
+    }
+    .modal-dialog {
+        box-sizing: border-box;
+        padding: 28px 32px 32px 32px;
+        background: #171B26;
+        border-radius: 12px;
+    }
+    .modal-footer {
+        margin-top: 16px;
+        display: flex;
+        align-items: center;
+        grid-gap: 14px;
+    }
+    [x-cloak] {
+        display: none !important;
+    }
+    @media all and (max-width: 1600px) {
+        .container_platform {
+            max-width: 890px !important;
+        }
+    }
+    @media all and (max-width: 1440px) {
+        .container_platform {
+            max-width: 828px !important;
+        }
+        .modal-dialog {
+            padding: 22px 24px 24px 24px;
+            border-radius: 10px;
+        }
+    }
+    @media all and (max-width: 1280px) {
+        .container_platform {
+            max-width: 766px !important;
+        }
+    }
+    @media all and (max-width: 1024px) {
+        .container_platform {
+            max-width: 704px !important;
+        }
+    }
+    @media all and (max-width: 960px) {
+        .container_platform {
+            max-width: 960px !important;
+            padding: 0 30px;
+        }
+    }
+    @media all and (max-width: 600px) {
+        .main {
+            padding-top: 74px;
+            padding-bottom: 24px;
+        }
+        .container_platform {
+            max-width: 960px !important;
+            padding: 0;
+        }
+        .modal-dialog {
+            padding: 16px 18px 18px 18px;
+        }
+    }
+</style>
+</head>
+
+<body class="min-h-[100dvh] w-full bg-[#0D111D] text-white">
+  
+  <style>
+  .navbar {
+      margin: 0 auto;
+      max-width: calc(952px + 272px);
+  }
+  .block__info {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      grid-gap: 4px;
+  }
+  .block_drop_down {
+      width: 216px;
+      position: absolute;
+      top: 25px;
+      right: 0;
+      opacity: 0;
+      visibility: hidden;
+      z-index: 1;
+  }
+  .drop_down_menu {
+      width: 216px;
+      position: absolute;
+      transition: all 0.5s, visibility 0s;
+      visibility: hidden;
+      top: 25px;
+      right: 0;
+      background: #333846;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 20px;
+      opacity: 0;
+      z-index: -1;
+  }
+  .block__back_challenge {
+      display: flex;
+      align-items: center;
+      grid-gap: 22px;
+      margin-right: 14px;
+  }
+  .line_back_challenge {
+      width: 1px;
+      height: calc(100% - 16px);
+      background-color: #575A61;
+  }
+  .block__notification {
+      position: relative;
+      display: flex;
+      align-items: center;
+  }
+  .notification__content {
+      margin-right: 8px;
+      position: relative;
+      cursor: pointer;
+  }
+  .count_not {
+      position: absolute;
+      top: -7px;
+      right: -7px;
+      background: #F15048;
+      border-radius: 50%;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 18px;
+      color: #fff;
+      width: 18px;
+      height: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+  .drop_down_menu__show {
+      opacity: 1;
+      z-index: 2;
+      visibility: visible;
+  }
+  .drop_down_menu__link {
+      cursor: pointer;
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      grid-gap: 10px;
+  }
+  .svg_drop_down {
+      transition: all 0.5s;
+      transform: rotateZ(0deg);
+  }
+  .svg_rotate {
+      transform: rotateZ(180deg);
+  }
+  .modal__block_exit {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 21;
+  }
+  .notification__pop_up {
+      position: absolute;
+      right: 0;
+      top: 40px;
+      padding:0 20px;
+      background: #171B26;
+      border-radius: 10px;
+      width: 500px;
+      box-sizing: border-box;
+  }
+  .container__notification__pop_up {
+      padding: 20px 0;
+      display: grid;
+      grid-gap: 20px;
+      max-height: 500px;
+      overflow: auto;
+  }
+  .container__notification__pop_up::-webkit-scrollbar {
+      width: 4px;
+      cursor: default !important;
+  }
+
+  .container__notification__pop_up::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0);
+      border-radius: 4px 0 0 4px;
+      overflow: hidden;
+      cursor: default !important;
+  }
+
+  .container__notification__pop_up::-webkit-scrollbar-thumb {
+      background-color: #333846;
+      border-radius: 3px;
+      cursor: default !important;
+  }
+  .modal__block_open {
+      display: flex;
+  }
+  .block__notification_pop_up {
+      padding: 16px 18px;
+      border-radius: 10px;
+      background: #222631;
+  }
+  .header__notification_pop_up {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      height: 34px;
+      border-bottom: 1px solid #666970;
+  }
+  .header__notification_pop_up_title {
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 20px;
+      color: #fff;
+  }
+  .header__notification_pop_up_date {
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 20px;
+      color: #7A7D83;
+  }
+  .content__notification_pop_up {
+      margin-top: 16px;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 22px;
+      color: #fff;
+  }
+  .button__notification__pop_up {
+      cursor: pointer;
+      border-top: 1px solid #ebebeb;
+      padding: 16px 0;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 22px;
+      color: #7A7D83;
+      display: flex;
+      justify-content: center;
+      transition: all .5s;
+  }
+
+  @media all and (max-width: 1600px) {
+      .navbar {
+          max-width: calc(890px + 249px);
+      }
+  }
+  @media all and (max-width: 1440px) {
+      .navbar {
+          max-width: calc(828px + 226px);
+      }
+      .block__info {
+          grid-gap: 2px;
+      }
+      .block_drop_down {
+          width: 216px;
+          top: 25px;
+      }
+      .drop_down_menu {
+          width: 216px;
+          top: 25px;
+          font-size: 15px;
+          line-height: 18px;
+      }
+      .block__back_challenge {
+          grid-gap: 20px;
+          margin-right: 12px;
+      }
+      .notification__content {
+          margin-right: 6px;
+      }
+      .count_not {
+          top: -5px;
+          right: -5px;
+          font-size: 13px;
+          line-height: 16px;
+          width: 16px;
+          height: 16px;
+      }
+      .drop_down_menu__link {
+          padding: 9px 11px;
+          grid-gap: 8px;
+      }
+      .notification__pop_up {
+          padding:0 16px;
+      }
+      .container__notification__pop_up {
+          padding: 18px 0;
+          grid-gap: 18px;
+      }
+      .block__notification_pop_up {
+          padding: 12px 14px;
+      }
+      .header__notification_pop_up {
+          height: 30px;
+      }
+      .header__notification_pop_up_title {
+          font-size: 15px;
+          line-height: 18px;
+      }
+      .header__notification_pop_up_date {
+          font-size: 15px;
+          line-height: 18px;
+      }
+      .content__notification_pop_up {
+          margin-top: 12px;
+          font-size: 15px;
+          line-height: 20px;
+      }
+      .button__notification__pop_up {
+          padding: 12px 0;
+          font-size: 15px;
+          line-height: 20px;
+      }
+  }
+  @media all and (max-width: 1280px) {
+      .navbar{
+          max-width: calc(766px + 203px);
+      }
+  }
+  @media all and (max-width: 1024px) {
+      .navbar {
+          max-width: calc(704px + 180px);
+      }
+  }
+  @media all and (max-width: 960px) {
+      .navbar {
+          padding: 0 30px;
+      }
+  }
+  @media all and (max-width: 600px) {
+      .navbar {
+          padding: 0 15px;
+      }
+      .modal__block_exit {
+          align-items: flex-end;
+      }
+      .notification__pop_up {
+          width: 100%;
+      }
+  }
+</style>
+
+<nav id="navbar" class="bg-[#171b26] position-fixed w-100 z-3">
+  <div class="modal__block_exit"
+       id="modal_exit"
+  >
+    <div class="modal-dialog modal-dialog__delete">
+      <div class="modal-content">
+        <p class="mb-0">Are you sure you want to log out of your account?</p>
+        <div class="modal-footer">
+          <button type="button" class="confirmation_button button_not" id="closeModalExit">No</button>
+          <a href="/logout">
+            <button type="button" class="confirmation_button button_yes">Yes</button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="navbar flex sm:flex-row w-100 flex-wrap justify-between items-center">
+    <div class="flex flex-row">
+      <a href="/" class="navbar-brand">
+        <img
+            class="img-responsive ctf_logo"
+            style="max-width: 100%; height: auto; min-height: 34px"
+            src="/themes/core-beta/static/img/logo.svg"
+            alt="cr3 CTF"
+            height="34"
+        >
+      </a>
+    </div>
+    <div>
+      <div class="flex flex-row gap-2 position-relative">
+        
+        
+        
+        
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  let url_navbar = window.location.pathname;
+
+  if ( url_navbar !== '/' ) document.getElementById('navbarBackChallenge').style.display = 'none';
+  else document.getElementById('blockNotification').style.display = 'none';
+</script>
+  
+
+  <main role="main" class="main">
+    
+    
+  <div class="container_platform">
+    <style>
+    a {
+        text-decoration: none;
+    }
+    .svg {
+        display: flex;
+        align-items: flex-end;
+    }
+    .landing {
+        color: #fff;
+    }
+    .landing_page {
+        position: relative;
+        margin: 40px 0 192px 0;
+    }
+    .landing_background {
+        position: absolute;
+        max-width: 1800px;
+        top: -210px;
+        left: -260px;
+        width: 88vw;
+        height: 686px;
+        background-image: url("/themes/core-beta/static/img/landing/rectangles.svg");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        z-index: 1;
+        background-size: cover;
+    }
+    .landing_welcome {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        grid-gap: 16px;
+    }
+    .link_RIN {
+        text-decoration: underline;
+    }
+
+    .welcome__link {
+        display: flex;
+        align-items: center;
+    }
+    .welcome__discord {
+        padding: 2px 10px;
+        background-color: #fff;
+        border-radius: 16px;
+        font-size: 15px;
+        font-weight: 600;
+        line-height: 20px;
+        text-align: center;
+        color: #5865F2;
+    }
+    .welcome__description {
+        font-size: 15px;
+        font-weight: 600;
+        line-height: 20px;
+        text-align: left;
+        color: #fff;
+        margin:0 4px 0 12px;
+    }
+    .welcome__title {
+        font-size: 60px;
+        font-weight: 600;
+        line-height: 72px;
+        letter-spacing: -0.02em;
+        text-align: center;
+    }
+    .welcome__date {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 28px;
+        text-align: center;
+        color: #7A7D83;
+    }
+    .welcome__button {
+        margin-top: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        grid-gap: 12px ;
+    }
+    .button_login {
+        padding: 16px 28px;
+        border-radius: 12px;
+        background: #222631;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 22px;
+        transition: all 0.5s;
+        cursor: pointer;
+        color: #fff;
+    }
+    .button_login:hover {
+        background: #333846;
+    }
+    .button_register {
+        padding: 16px 28px;
+        border-radius: 12px;
+        background: #F15048;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 22px;
+        transition: all 0.5s;
+        cursor: pointer;
+        color: #fff;
+    }
+    .button_register:hover {
+        background: #E7362B;
+    }
+    .landing_mockup {
+        position: relative;
+        z-index: 2;
+        margin-top: 68px;
+    }
+    .mockup_desctop {
+        display: block;
+    }
+    .mockup_mobile {
+        display: none;
+    }
+    .landing_partners {
+        position: relative;
+        z-index: 2;
+        margin-top: 96px;
+        display: flex;
+        flex-direction: column;
+    }
+    .partners__title {
+        width: 100%;
+        text-align: center;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 20px;
+        color: #fff;
+    }
+    .partners__list {
+        display: grid;
+        grid-template-columns: minmax(0, 1.55fr) minmax(0, 0.5fr) minmax(0, 1.1fr) minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 1fr);
+        grid-gap: 43px;
+    }
+    .partners__list_table {
+        display: none;
+    }
+    .svg__partners {
+        display: flex;
+        align-items: center;
+        height: 100%
+    }
+    .partners__aldrin {
+        margin-top: 0px;
+    }
+    .landing_prizes {
+        margin-top: 196px;
+    }
+    .prizes__title {
+        font-size: 36px;
+        font-weight: 600;
+        line-height: 44px;
+        letter-spacing: -0.02em;
+        text-align: left;
+        color: #fff;
+    }
+    .prizes__subtitle {
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 28px;
+        text-align: left;
+        margin-top: 12px;
+        color: #7A7D83;
+    }
+    .prizes__content {
+        margin-top: 64px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 48px;
+    }
+    .container_prizes {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 32px 24px;
+        border-radius: 16px;
+        background: #171B26;
+    }
+    .prizes_st_place {
+        width: max-content;
+        padding: 6px 10px;
+        background: #F15048;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 20px;
+        text-align: center;
+        color: #fff;
+        border-radius: 36px;
+    }
+    .prizes_money {
+        color: #fff;
+    }
+    .money__count {
+        font-size: 36px;
+        font-weight: 700;
+        line-height: 44px;
+        letter-spacing: -0.02em;
+        text-align: center;
+    }
+    .money__currency {
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 44px;
+        letter-spacing: -0.02em;
+        text-align: center;
+    }
+    .line {
+        width: 100%;
+        height: 1px;
+        margin: 24px 0 32px 0;
+        background-color: #666970;
+    }
+    .prizes_description {
+        display: grid;
+        grid-gap: 24px;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 20px;
+    }
+    .prizes_description__item {
+        display: flex;
+        align-items: flex-start;
+        grid-gap: 8px;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 20px;
+    }
+    .block__contest {
+        margin-top: 48px;
+        display: flex;
+        align-items: center;
+        padding: 24px 32px;
+        border-radius: 16px;
+        background: #171B26;
+        grid-gap: 8px;
+    }
+    .landing_rules {
+        margin-top: 192px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .rules__list {
+        max-width: 832px;
+        width: 100%;
+        margin-top: 64px;
+        display: grid;
+        grid-gap: 24px;
+    }
+    .rule__block {
+        width: 100%;
+        padding: 26px;
+        display: flex;
+        align-items: flex-start;
+        grid-gap: 10px;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 22px;
+        background: #171B26;
+        border-radius: 16px;
+    }
+    @media all and (max-width: 1600px) {
+        .landing_background {
+            left: -140px;
+            width: 88vw;
+            height: 636px;
+        }
+        .landing_page {
+            margin: 30px 0 176px 0;
+        }
+        .landing_welcome {
+            grid-gap: 14px;
+        }
+        .welcome__title {
+            font-size: 57px;
+            line-height: 66px;
+        }
+        .welcome__button {
+            margin-top: 40px;
+        }
+        .button_login {
+            padding: 15px 25px;
+            border-radius: 11px;
+            font-size: 16px;
+            line-height: 21px;
+        }
+        .button_register {
+            padding: 15px 25px;
+            border-radius: 11px;
+            font-size: 16px;
+            line-height: 21px;
+        }
+        .landing_mockup {
+            margin-top: 65px;
+        }
+        .landing_partners {
+            margin-top: 88px;
+        }
+        .partners__title {
+            font-size: 16px;
+            line-height: 20px;
+        }
+        .partners__list {
+            grid-gap: 40px;
+        }
+        .partners__aldrin {
+            margin-top: 0px;
+        }
+        .landing_prizes {
+            margin-top: 179px;
+        }
+        .prizes__title {
+            font-size: 34px;
+            line-height: 41px;
+        }
+        .prizes__subtitle {
+            margin-top: 11px;
+        }
+        .prizes__content {
+            margin-top: 60px;
+            grid-gap: 42px;
+        }
+        .container_prizes {
+            padding: 31px 23px;
+            border-radius: 14px;
+        }
+        .money__count {
+            font-size: 34px;
+        }
+        .block__contest {
+            margin-top: 42px;
+            padding: 22px 30px;
+            border-radius: 14px;
+        }
+        .landing_rules {
+            margin-top: 179px;
+        }
+        .rules__list {
+            margin-top: 60px;
+            grid-gap: 23px;
+        }
+        .rule__block {
+            padding: 26px;
+            grid-gap: 10px;
+            font-size: 18px;
+            line-height: 22px;
+            border-radius: 16px;
+        }
+        .rule__block {
+            border-radius: 14px;
+        }
+    }
+    @media all and (max-width: 1440px) {
+        .landing_page {
+            margin: 19px 0 160px 0;
+        }
+        .landing_background {
+            left: -260px;
+            width: 88vw;
+            height: 606px;
+        }
+        .landing_welcome {
+            grid-gap: 12px;
+        }
+        .welcome__title {
+            font-size: 54px;
+            line-height: 60px;
+        }
+        .welcome__date {
+            font-size: 18px;
+        }
+        .welcome__button {
+            margin-top: 28px;
+        }
+        .landing_mockup {
+            margin-top: 62px;
+        }
+        .button_login {
+            padding: 14px 25px;
+            border-radius: 10px;
+            font-size: 15px;
+            line-height: 20px;
+        }
+        .button_register {
+            padding: 14px 25px;
+            border-radius: 10px;
+            font-size: 15px;
+            line-height: 20px;
+        }
+        .landing_partners {
+            margin-top: 80px;
+        }
+        .partners__title {
+            font-size: 15px;
+        }
+        .partners__list {
+            display: none;
+        }
+        .partners__list_table {
+            display: flex;
+            flex-direction: column;
+            grid-gap: 20px;
+        }
+        .partners__list_table_item {
+            display: flex;
+            justify-content: center;
+            grid-gap: 20px;
+        }
+        .partners__aldrin {
+            margin-top: -5px;
+        }
+        .landing_prizes {
+            margin-top: 162px;
+        }
+        .prizes__content {
+            margin-top: 56px;
+            grid-gap: 36px;
+        }
+        .container_prizes {
+            padding: 30px 22px;
+            border-radius: 12px;
+        }
+        .prizes__title {
+            font-size: 32px;
+            line-height: 38px;
+        }
+        .prizes__subtitle {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        .prizes_st_place {
+            padding: 4px 6px;
+            font-size: 15px;
+        }
+        .money__count {
+            font-size: 32px;
+            line-height: 42px;
+        }
+        .money__currency {
+            font-size: 24px;
+            line-height: 44px;
+        }
+        .line {
+            margin: 22px 0 28px 0;
+        }
+        .prizes_description {
+            grid-gap: 24px;
+            font-size: 16px;
+            line-height: 20px;
+        }
+        .prizes_description__item {
+            font-size: 15px;
+        }
+        .block__contest {
+            margin-top: 36px;
+            padding: 20px 28px;
+            border-radius: 12px;
+        }
+        .landing_rules {
+            margin-top: 162px;
+        }
+        .rules__list {
+            margin-top: 56px;
+            grid-gap: 22px;
+        }
+        .rule__block {
+            padding: 24px;
+            font-size: 16px;
+            line-height: 20px;
+            background: #171B26;
+            border-radius: 12px;
+        }
+    }
+    @media all and (max-width: 1280px) {
+        .landing_page {
+            margin: 8px 0 144px 0;
+        }
+        .landing_background {
+            top: -192px;
+            left: -270px;
+            width: 88vw;
+            height: 596px;
+        }
+        .landing_welcome {
+            grid-gap: 10px;
+        }
+        .welcome__title {
+            font-size: 51px;
+            line-height: 54px;
+        }
+        .welcome__button {
+            margin-top: 26px;
+        }
+        .landing_mockup {
+            margin-top: 59px;
+        }
+        .button_login {
+            padding: 13px 25px;
+        }
+        .button_register {
+            padding: 13px 25px;
+        }
+        .landing_partners {
+            margin-top: 72px;
+        }
+        .partners__list {
+            grid-gap: 34px;
+        }
+        .landing_prizes {
+            margin-top: 145px;
+        }
+        .landing_prizes {
+            margin-top: 162px;
+        }
+        .prizes__content {
+            margin-top: 52px;
+            grid-gap: 30px;
+        }
+        .container_prizes {
+            padding: 29px 21px;
+            border-radius: 10px;
+        }
+        .prizes__title {
+            font-size: 30px;
+            line-height: 35px;
+        }
+        .prizes__subtitle {
+            margin-top: 9px;
+        }
+        .money__count {
+            font-size: 30px;
+        }
+        .block__contest {
+            margin-top: 30px;
+            border-radius: 10px;
+        }
+        .landing_rules {
+            margin-top: 145px;
+        }
+        .rules__list {
+            margin-top: 52px;
+            grid-gap: 21px;
+        }
+        .rule__block {
+            border-radius: 10px;
+        }
+        c
+    }
+    @media all and (max-width: 1024px) {
+        .landing_page {
+            margin: 8px 0 128px 0;
+        }
+        .landing_background {
+            top: -156px;
+            left: -280px;
+            width: 124vw;
+            height: 545px;
+        }
+        .landing_welcome {
+            grid-gap: 8px;
+        }
+        .welcome__title {
+            font-size: 48px;
+            line-height: 48px;
+        }
+        .welcome__button {
+            margin-top: 22px;
+        }
+        .landing_mockup {
+            margin-top: 56px;
+        }
+        .landing_partners {
+            margin-top: 64px;
+        }
+        .partners__list {
+            grid-gap: 32px;
+        }
+        .landing_prizes {
+            margin-top: 128px;
+        }
+        .prizes__content {
+            margin-top: 48px;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 28px;
+        }
+        .container_prizes {
+            padding: 28px 20px;
+        }
+        .prizes__title {
+            font-size: 28px;
+            line-height: 32px;
+        }
+        .prizes__subtitle {
+            margin-top: 8px;
+        }
+        .money__count {
+            font-size: 28px;
+            line-height: 40px;
+        }
+        .line {
+            margin: 20px 0 24px 0;
+        }
+        .block__contest {
+            margin-top: 24px;
+        }
+        .landing_rules {
+            margin-top: 128px;
+        }
+        .rules__list {
+            margin-top: 48px;
+            grid-gap: 20px;
+        }
+        .partners__aldrin {
+            margin-top: -3px;
+        }
+    }
+    @media all and (max-width: 724px) {
+        .landing_page {
+            margin: 8px 30px 128px 30px;
+        }
+
+    }
+
+    @media all and (max-width: 640px) {
+        .landing_page {
+            margin: -29px 15px 56px 15px;
+        }
+
+        .landing_background {
+            top:-156px;
+            left: -341px;
+            width: 147vw;
+            height: 545px;
+        }
+        .landing_welcome {
+            grid-gap: 12px;
+        }
+
+        .welcome__title {
+            font-size: 36px;
+            line-height: 44px;
+        }
+
+        .welcome__date {
+            font-size: 17px;
+        }
+
+        .welcome__button {
+            margin-top: 12px;
+        }
+
+        .landing_mockup {
+            margin-top: 46px;
+            display: flex;
+            justify-content:center;
+        }
+        .partners__list_table {
+            display: none;
+        }
+        .prizes__content {
+            grid-template-columns: 1fr;
+        }
+        .mockup_desctop {
+            display: none;
+        }
+        .mockup_mobile {
+            display: block;
+        }
+        .landing_partners {
+            margin-top: 56px;
+        }
+        .partners__list {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            grid-gap: 12px;
+            justify-content: center;
+        }
+        .partners__foxie {
+            width: 248px;
+            height: 76px;
+            order: 4;
+        }
+        .partners__aldrin {
+            width: 108px;
+            height: 40px;
+            order: 1;
+            margin-top: 10px;
+        }
+        .partners__ottersec {
+            width: 170px;
+            height: 38px;
+            order: 0;
+        }
+        .partners__wolfram {
+            width: 195px;
+            height: 44px;
+            order: 2;
+        }
+        .partners__ret2 {
+            width: 144px;
+            height: 45px;
+            order: 3;
+        }
+        .partners__offsec {
+            width: 144px;
+            height: 45px;
+            order: 5;
+        }
+        .landing_prizes {
+            margin-top: 96px;
+        }
+        .prizes__title {
+            font-size: 22px;
+            line-height: 28px;
+            text-align: center;
+        }
+        .prizes__subtitle {
+            font-size: 16px;
+            margin-top: 4px;
+            text-align: center;
+        }
+        .prizes__content {
+            margin-top: 32px;
+            grid-gap: 24px;
+        }
+        .landing_rules {
+            margin-top: 112px;
+        }
+        .rules__list {
+            margin-top: 32px;
+            grid-gap: 16px;
+        }
+        .rule__block {
+            font-size: 15px;
+        }
+    }
+
+    @media all and (max-width: 390px) {
+        .partners__aldrin {
+            margin-top: -7px;
+        }
+    }
+
+</style>
+<div class="landing landing_page">
+  <div class="landing_background"></div>
+  <div class="landing_welcome">
+    <a href="https://discord.gg/hhh4Bk2CvX" class="welcome__link" target="_blank">
+      <span class="link welcome__discord">Discord</span>
+      <span class="link welcome__description">Hang out with people who get it</span>
+      <div class="svg">
+        <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M8.96967 3.21967C9.26256 2.92678 9.73744 2.92678 10.0303 3.21967L15.2803 8.46967C15.5732 8.76256 15.5732 9.23744 15.2803 9.53033L10.0303 14.7803C9.73744 15.0732 9.26256 15.0732 8.96967 14.7803C8.67678 14.4874 8.67678 14.0126 8.96967 13.7197L12.9393 9.75H4.25C3.83579 9.75 3.5 9.41421 3.5 9C3.5 8.58579 3.83579 8.25 4.25 8.25H12.9393L8.96967 4.28033C8.67678 3.98744 8.67678 3.51256 8.96967 3.21967Z" fill="white"/>
+        </svg>
+      </div>
+    </a>
+    <span class="welcome__title">Welcome to cr3 CTF 2024</span>
+    <div class="welcome__date">
+      <div>
+        <span id="ctf_start">2024-04-26T13:00:00Z</span> - <span id="ctf_end">2024-04-28T01:00:00Z</span>
+      </div>
+      <div>
+        We will be glad to see you <3
+      </div>
+    </div>
+    <div class="welcome__button">
+<a href="/challenges" class="button button_register">Back to challenges</a>
+    </div>
+  </div>
+  <div class="landing_mockup">
+    <img src="/themes/core-beta/static/img/landing/mockup.png" alt="mockup" class="mockup_desctop">
+    <img src="/themes/core-beta/static/img/landing/iphone-x.png" alt="mockup" class="mockup_mobile">
+  </div>
+  <div class="landing_partners">
+      <span class="partners__title">
+        Our partners
+      </span>
+    <div class="partners__list">
+      <a href="https://github.com/foxie-solutions" target="_blank"><img src="/themes/core-beta/static/img/landing/foxie-solutions.svg" alt="foxie_soolutions" class="svg__partners partners__foxie"></a>
+      <a href="https://twitter.com/aldrin_labs" target="_blank"><img src="/themes/core-beta/static/img/landing/aldrin.svg" alt="aldrin" class="svg__partners partners__aldrin"></a>
+      <a href="https://osec.io/" target="_blank"><img src="/themes/core-beta/static/img/landing/ottersec.svg" alt="ottersec" class="svg__partners partners__ottersec"></a>
+      <a href="https://www.wolfram.com/" target="_blank"><img src="/themes/core-beta/static/img/landing/wolfram.svg" alt="wolfram" class="svg__partners partners__wolfram"></a>
+      <a href="https://ret2.io/" target="_blank"><img src="/themes/core-beta/static/img/landing/ret-2.svg" alt="ret2" class="svg__partners partners__ret2"></a>
+      <a href="https://www.offsec.com/" target="_blank"><img src="/themes/core-beta/static/img/landing/offsec.svg" alt="ret2" class="svg__partners partners__offsec"></a>
+    </div>
+    <div class="partners__list_table">
+      <div class="partners__list_table_item">
+        <a href="https://github.com/foxie-solutions" target="_blank"><img src="/themes/core-beta/static/img/landing/foxie-solutions.svg" alt="foxie_soolutions" class="svg__partners partners__foxie"></a>
+        <a href="https://twitter.com/aldrin_labs" target="_blank"><img src="/themes/core-beta/static/img/landing/aldrin.svg" alt="aldrin" class="svg__partners partners__aldrin"></a>
+        <a href="https://osec.io/" target="_blank"><img src="/themes/core-beta/static/img/landing/ottersec.svg" alt="ottersec" class="svg__partners partners__ottersec"></a>
+        <a href="https://www.wolfram.com/" target="_blank"><img src="/themes/core-beta/static/img/landing/wolfram.svg" alt="wolfram" class="svg__partners partners__wolfram"></a>
+      </div>
+      <div class="partners__list_table_item">
+        <a href="https://ret2.io/" target="_blank"><img src="/themes/core-beta/static/img/landing/ret-2.svg" alt="ret2" class="svg__partners partners__ret2"></a>
+        <a href="https://www.offsec.com/" target="_blank"><img src="/themes/core-beta/static/img/landing/offsec.svg" alt="ret2" class="svg__partners partners__ret2"></a>
+      </div>
+    </div>
+  </div>
+  <div class="landing_prizes">
+    <div class="prizes__title">Prizes</div>
+    <div class="prizes__subtitle">The prize fund is $8000+ USD</div>
+    <div class="prizes__content">
+      <div class="container_prizes">
+        <div class="prizes_st_place">1 st place</div>
+        <div class="prizes_money">
+          <span class="money__count">3000</span>
+          <span class="money__currency">USDT</span>
+        </div>
+        <div class="line"></div>
+        <div class="prizes_description">
+          <div class="prizes_description__item"><img src="/themes/core-beta/static/img/landing/check-icon.svg" alt="check"><span>10000 <a class="link_RIN" href="https://www.coingecko.com/en/coins/aldrin" target="_blank"><span class="link_RIN">RIN</span></a> (~1300 USD)</span></div>
+          <div class="prizes_description__item"><img src="/themes/core-beta/static/img/landing/check-icon.svg" alt="check">Wolfram|One Personal Edition (x5)</div>
+          <div class="prizes_description__item"><img src="/themes/core-beta/static/img/landing/check-icon.svg" alt="check">One-year subscription to Wolfram|Alpha Pro (x5)</div>
+          <div class="prizes_description__item"><img src="/themes/core-beta/static/img/landing/check-icon.svg" alt="check">Ret 2 wargames tokens (x4)</div>
+          <div class="prizes_description__item"><img src="/themes/core-beta/static/img/landing/check-icon.svg" alt="check">3-month Offseс PG practice (x1)</div>
+        </div>
+      </div>
+      <div class="container_prizes">
+        <div class="prizes_st_place">2 nd place</div>
+        <div class="prizes_money">
+          <span class="money__count">1500</span>
+          <span class="money__currency">USDT</span>
+        </div>
+        <div class="line"></div>
+        <div class="prizes_description">
+          <div class="prizes_description__item"><img src="/themes/core-beta/static/img/landing/check-icon.svg" alt="check"><span>5000 <a class="link_RIN" href="https://www.coingecko.com/en/coins/aldrin" target="_blank"><span class="link_RIN">RIN</span></a> (~660 USD)</span></div>
+          <div class="prizes_description__item"><img src="/themes/core-beta/static/img/landing/check-icon.svg" alt="check">Wolfram|One Personal Edition (x5)</div>
+          <div class="prizes_description__item"><img src="/themes/core-beta/static/img/landing/check-icon.svg" alt="check">One-year subscription to Wolfram|Alpha Pro (x5)</div>
+          <div class="prizes_description__item"><img src="/themes/core-beta/static/img/landing/check-icon.svg" alt="check">Ret 2 wargames tokens (x3)</div>
+          <div class="prizes_description__item"><img src="/themes/core-beta/static/img/landing/check-icon.svg" alt="check">Offseс Learn Fundamentals (x1)</div>
+        </div>
+      </div>
+      <div class="container_prizes">
+        <div class="prizes_st_place">3 rd place</div>
+        <div class="prizes_money">
+          <span class="money__count">1000</span>
+          <span class="money__currency">USDT</span>
+        </div>
+        <div class="line"></div>
+        <div class="prizes_description">
+          <div class="prizes_description__item"><img src="/themes/core-beta/static/img/landing/check-icon.svg" alt="check"><span>3000 <a href="https://www.coingecko.com/en/coins/aldrin" target="_blank"><span class="link_RIN">RIN</span></a> (~400 USD)</span></div>
+          <div class="prizes_description__item"><img src="/themes/core-beta/static/img/landing/check-icon.svg" alt="check">Wolfram|One Personal Edition (x5)</div>
+          <div class="prizes_description__item"><img src="/themes/core-beta/static/img/landing/check-icon.svg" alt="check">One-year subscription to Wolfram|Alpha Pro (x5)</div>
+          <div class="prizes_description__item"><img src="/themes/core-beta/static/img/landing/check-icon.svg" alt="check">Ret 2 wargames tokens (x3)</div>
+        </div>
+      </div>
+    </div>
+    <div class="block__contest">
+      <div class="prizes_description__item"><img src="/themes/core-beta/static/img/landing/check-icon.svg" alt="check">We will additionally host a post-event writeup competition where 20 USDT prizes will be awarded to the top 10 writeup authors.</div>
+    </div>
+  </div>
+  <div class="landing_rules">
+    <div class="prizes__title">Rules</div>
+    <div class="prizes__subtitle">If you do not comply with the rules, you will be disqualified</div>
+    <div class="rules__list">
+      <div class="rule__block"><img src="/themes/core-beta/static/img/landing/info-circle.svg" alt="rule">Sharing flags or solutions is forbidden.</div>
+      <div class="rule__block"><img src="/themes/core-beta/static/img/landing/info-circle.svg" alt="rule">DoS attacks, or any other deliberate harm to the infrastructure is forbidden.</div>
+      <div class="rule__block"><img src="/themes/core-beta/static/img/landing/info-circle.svg" alt="rule">Using brute force attacks on resources hosted by the event infrastructure is forbidden.</div>
+      <div class="rule__block"><img src="/themes/core-beta/static/img/landing/info-circle.svg" alt="rule">The flag format is cr3{.*}</div>
+    </div>
+  </div>
+</div>
+<script>
+  let ctfStart = new Date("2024-04-26T13:00:00Z");
+  let ctfEnd = new Date("2024-04-28T01:00:00Z");
+
+  function convertDate(dateString) {
+    const date = new Date(dateString);
+
+    const dateOptions = { day: '2-digit', month: 'short', timeZone: 'UTC' };
+    const timeOptions = { hour: '2-digit', minute: '2-digit', timeZoneName: 'short', timeZone: 'UTC' };
+
+    const dateFormatter = new Intl.DateTimeFormat('en-GB', dateOptions);
+    const timeFormatter = new Intl.DateTimeFormat('en-GB', timeOptions);
+
+    const formattedDate = dateFormatter.format(date);
+    const formattedTime = timeFormatter.format(date).replace(',', '');
+
+    return `${formattedDate} ${formattedTime}`;
+  }
+
+  document.getElementById("ctf_start").innerHTML = convertDate(ctfStart);
+  document.getElementById("ctf_end").innerHTML = convertDate(ctfEnd);
+</script>
+
+  </div>
+
+    <script>
+  let url_sidebar = window.location;
+  let sidebar = document.getElementById('sidebar');
+
+  if (sidebar) {
+      let url_active_page = url_sidebar.pathname.split('/')[1];
+      document.getElementById(url_active_page).classList.add('sidebar_item__active');
+  }
+</script>
+
+<script defer type="module" src="/themes/core-beta/static/assets/index.4a8d564d.js"></script><script defer type="module" src="/themes/core-beta/static/assets/notifications.cd55b720.js"></script>
+
+<script>
+  let url = window.location;
+  let navbar = document.getElementById('navbar');
+  if (navbar) {
+      if (url.pathname !== '/') navbar.style.backgroundColor = '#171B26';
+  }
+
+  let dropDownMenu = document.getElementById('drop_down_menu');
+  let svgDropDown = document.getElementById('svg_drop_down');
+  let modalExit = document.getElementById('modal_exit');
+
+  headerInfoUser.onclick = () => {
+    if ( dropDownMenu.classList.value === 'drop_down_menu' && svgDropDown.classList.value === 'svg svg_drop_down' ) {
+      dropDownMenu.classList.add('drop_down_menu__show');
+      svgDropDown.classList.add('svg_rotate');
+    }else {
+      dropDownMenu.classList.remove('drop_down_menu__show');
+      svgDropDown.classList.remove('svg_rotate');
+    }
+  }
+
+  exit.onclick = () => {
+    modalExit.classList.add('modal__block_open');
+  }
+
+  modal_exit.onclick = (e) => {
+    if ( e.target.classList.value === 'modal__block_exit modal__block_open' )
+      modalExit.classList.remove('modal__block_open');
+  }
+
+  closeModalExit.onclick = (e) => {
+    if ( e.target.classList.value === 'confirmation_button button_not' )
+      modalExit.classList.remove('modal__block_open');
+  }
+
+  document.body.addEventListener('click', (event) => {
+    if ( event.target.classList.value !== 'block__info_name' ) {
+      dropDownMenu.classList.remove('drop_down_menu__show');
+      svgDropDown.classList.remove('svg_rotate');
+    }
+  })
+</script>
+<script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+  </main>
+
+  
+  <style>
+  .footer {
+      z-index: 0;
+  }
+  .footer_logo {
+      grid-gap: 40px;
+  }
+  @media all and (max-width: 1600px) {
+      .footer_logo {
+          grid-gap: 36px;
+      }
+  }
+  @media all and (max-width: 1440px) {
+      .footer_logo {
+          grid-gap: 32px;
+      }
+  }
+  @media all and (max-width: 1280px) {
+      .footer_logo {
+          grid-gap: 28px;
+      }
+  }
+  @media all and (max-width: 1024px) {
+      .footer_logo {
+          grid-gap: 24px;
+      }
+  }
+  @media all and (max-width: 640px) {
+      .footer_logo {
+          grid-gap: 12px;
+      }
+  }
+</style>
+<footer id="footer" class="footer pt-2 my-4">
+  <div class="w-full flex flex-col sm:flex-row sm:justify-between items-center sm:px-[5%] select-none">
+    <span>
+      © 2024 cr3 CTF. All rights reserved.
+    </span>
+    <div class="d-flex align-content-center footer_logo">
+      <a href="https://ctftime.org/event/2288" target="_blank">
+        <svg width="143" height="40" viewBox="0 0 143 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g clip-path="url(#clip0_3936_10915)">
+            <path d="M0 40.0957H77.8716H143V0.0957031H0L16.7639 20.315L0 40.0957Z" fill="#E3000B"/>
+            <path d="M31.2383 29.2054H40.5964V26.0591H37.3627H34.9613V14.0687H37.3627H40.5964V10.5996H31.2383V29.2054Z" fill="white"/>
+            <path d="M43.5469 14.1745H46.2105V29.2054H49.9336V14.1745H52.5922V10.5996H43.5469V14.1745Z" fill="white"/>
+            <path d="M55.6445 29.0589H59.3726V21.6217H64.0189V18.7325H59.3726V14.0684H65.0884V10.5994L55.6445 10.4531V29.0589Z" fill="white"/>
+            <path d="M92.2148 12.7779H95.0097V29.2054H97.2445V12.7779H100.034V10.5996H92.2148V12.7779Z" fill="white"/>
+            <path d="M104.801 10.5996H102.566V29.2054H104.801V10.5996Z" fill="white"/>
+            <path d="M113.086 17.4066L110.427 10.5996H108.223V29.2054H110.427V16.025L113.086 22.7211L115.744 16.025V29.2054H117.954V10.5996H115.744L113.086 17.4066Z" fill="white"/>
+            <path d="M123.481 27.0272V20.9664H127.204V18.7882H123.481V12.7779H129.59L130.175 10.5996H121.246V29.2054H130.08L129.494 27.0272H123.481Z" fill="white"/>
+            <path d="M68.3789 10.5996V29.2054H88.4068V10.5996H68.3789ZM85.6775 26.6692H71.1132V13.1358H85.6775V26.6692Z" fill="white"/>
+            <path d="M77.6438 19.8565L74.5614 22.9323L76.5945 24.7324L81.3416 19.9927L73.2296 11.8848H69.668L77.6438 19.8565Z" fill="white"/>
+          </g>
+          <defs>
+            <clipPath id="clip0_3936_10915">
+              <rect width="143" height="40" fill="white"/>
+            </clipPath>
+          </defs>
+        </svg>
+      </a>
+      <a  href="https://discord.gg/hhh4Bk2CvX" class="px-2 bg-[#5865F2] flex flex-row gap-2 items-center justify-center rounded-full h-[36px] font-semibold hover:text-white cursor-pointer" target="_blank">
+        <svg width="24" height="16" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+              d="M20.3303 1.50747C18.7535 0.793091 17.0888 0.286285 15.3789 0C15.1449 0.413926 14.9332 0.8398 14.7446 1.27584C12.9232 1.00424 11.071 1.00424 9.24961 1.27584C9.06095 0.839845 8.84924 0.413976 8.61535 0C6.90433 0.288702 5.2386 0.796712 3.66019 1.51121C0.526644 6.099 -0.322811 10.5729 0.101917 14.9832C1.937 16.3249 3.99098 17.3453 6.17458 18C6.66626 17.3456 7.10134 16.6514 7.47519 15.9247C6.76511 15.6622 6.07975 15.3384 5.42706 14.957C5.59884 14.8337 5.76684 14.7067 5.92918 14.5834C7.82837 15.4673 9.90124 15.9255 12 15.9255C14.0987 15.9255 16.1715 15.4673 18.0707 14.5834C18.235 14.7161 18.403 14.8431 18.5729 14.957C17.9189 15.339 17.2323 15.6635 16.5209 15.9265C16.8943 16.6529 17.3294 17.3465 17.8216 18C20.007 17.3479 22.0626 16.328 23.898 14.9851C24.3963 9.87049 23.0467 5.43773 20.3303 1.50747ZM8.01318 12.2709C6.82961 12.2709 5.85179 11.208 5.85179 9.90037C5.85179 8.59278 6.79563 7.52055 8.0094 7.52055C9.22318 7.52055 10.1934 8.59278 10.1727 9.90037C10.1519 11.208 9.21941 12.2709 8.01318 12.2709ZM15.9867 12.2709C14.8013 12.2709 13.8272 11.208 13.8272 9.90037C13.8272 8.59278 14.7711 7.52055 15.9867 7.52055C17.2024 7.52055 18.1651 8.59278 18.1444 9.90037C18.1236 11.208 17.193 12.2709 15.9867 12.2709Z"
+              fill="white" />
+        </svg>
+        <span>Discord</span>
+      </a>
+    </div>
+  </div>
+</footer>
+  
+  <style>
+    .toast__modal {
+        position: fixed;
+        top: 100px;
+        right: 32px;
+        z-index: 11;
+    }
+    .toast__container {
+        padding: 16px 18px 18px 18px;
+        background: #222631;
+        border-radius: 8px;
+    }
+    .toast_header {
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 20px;
+        color: #fff;
+        display: flex;
+        align-items: flex-start;
+        height: 34px;
+        border-bottom: 1px solid #666970;
+    }
+    .toast_body {
+        margin-top: 14px;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 22px;
+        color:#fff;
+    }
+    @media all and (max-width: 1440px) {
+        .toast__modal {
+            top: 100px;
+            right: 32px;
+            z-index: 11;
+        }
+        .toast__container {
+            padding: 12px 14px 14px 14px;
+        }
+        .toast_header {
+            font-size: 15px;
+            line-height: 18px;
+            height: 30px;
+        }
+        .toast_body {
+            margin-top: 12px;
+            font-size: 15px;
+            line-height: 20px;
+        }
+    }
+</style>
+
+<div x-data>
+  <div class="toast__modal">
+    <div x-ref="toast" class="toast toast__container" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast_header">
+        <span class="me-auto" x-text="$store.toast.title"></span>
+        <button type="button" data-bs-dismiss="toast">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 1C5.92487 1 1 5.92487 1 12C1 18.0751 5.92487 23 12 23C18.0751 23 23 18.0751 23 12C23 5.92487 18.0751 1 12 1ZM9.70711 8.29289C9.31658 7.90237 8.68342 7.90237 8.29289 8.29289C7.90237 8.68342 7.90237 9.31658 8.29289 9.70711L10.5858 12L8.29289 14.2929C7.90237 14.6834 7.90237 15.3166 8.29289 15.7071C8.68342 16.0976 9.31658 16.0976 9.70711 15.7071L12 13.4142L14.2929 15.7071C14.6834 16.0976 15.3166 16.0976 15.7071 15.7071C16.0976 15.3166 16.0976 14.6834 15.7071 14.2929L13.4142 12L15.7071 9.70711C16.0976 9.31658 16.0976 8.68342 15.7071 8.29289C15.3166 7.90237 14.6834 7.90237 14.2929 8.29289L12 10.5858L9.70711 8.29289Z" fill="#666970"/>
+          </svg>
+        </button>
+      </div>
+      <div class="toast_body" x-html="$store.toast.html">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div x-data>
+  <div class="modal fade" x-ref="modal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" x-text="$store.modal.title"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p x-html="$store.modal.html"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Got it!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+  <script defer type="module" src="/themes/core-beta/static/assets/index.4a8d564d.js"></script><script defer type="module" src="/themes/core-beta/static/assets/page.546a5461.js"></script>
+
+
+  
+
+  
+</body>
+</html>
+<script>
+  if (window.location.pathname === '/') document.getElementsByClassName('container_platform')[0].style.maxWidth = "1208px";
+  else document.getElementsByClassName('container_platform')[0].style.maxWidth = "952px";
+</script>

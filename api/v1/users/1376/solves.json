@@ -1,0 +1,1 @@
+{"success": true, "data": [{"type": "correct", "user": {"id": 1376, "name": "n_o_t_l_i_e"}, "challenge_id": 54, "date": "2024-04-28T00:03:53.479438+00:00", "id": 2977, "challenge": {"id": 54, "name": "sanitycheck", "value": 1, "category": "misc"}, "team": {"id": 858, "name": "HackTea"}}], "meta": {"count": 1}}

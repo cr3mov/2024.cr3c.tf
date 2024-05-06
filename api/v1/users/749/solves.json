@@ -1,0 +1,1 @@
+{"success": true, "data": [{"type": "correct", "user": {"id": 749, "name": "adislavala"}, "challenge_id": 54, "date": "2024-04-26T15:12:37.023145+00:00", "id": 1040, "challenge": {"id": 54, "name": "sanitycheck", "value": 1, "category": "misc"}, "team": {"id": 435, "name": "Kukko ja Paalit"}}], "meta": {"count": 1}}

@@ -1,0 +1,1 @@
+{"success": true, "data": [{"type": "correct", "user": {"id": 1299, "name": "Alphaa"}, "challenge_id": 87, "date": "2024-04-27T15:24:39.313080+00:00", "id": 2645, "challenge": {"id": 87, "name": "survey", "value": 1, "category": "misc"}, "team": {"id": 310, "name": "MEAR"}}], "meta": {"count": 1}}

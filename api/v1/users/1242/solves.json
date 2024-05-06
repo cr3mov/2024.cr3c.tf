@@ -1,0 +1,1 @@
+{"success": true, "data": [{"type": "correct", "user": {"id": 1242, "name": "pilvar"}, "challenge_id": 82, "date": "2024-04-27T09:57:22.247550+00:00", "id": 2324, "challenge": {"id": 82, "name": "secretclub", "value": 442, "category": "web"}, "team": {"id": 11, "name": "thehackerscrew"}}], "meta": {"count": 1}}

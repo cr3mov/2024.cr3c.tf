@@ -1,0 +1,1 @@
+{"success": true, "data": [{"type": "correct", "user": {"id": 797, "name": "uvi"}, "challenge_id": 43, "date": "2024-04-26T15:59:38.708529+00:00", "id": 1261, "challenge": {"id": 43, "name": "embedding", "value": 376, "category": "crypto"}, "team": {"id": 11, "name": "thehackerscrew"}}], "meta": {"count": 1}}

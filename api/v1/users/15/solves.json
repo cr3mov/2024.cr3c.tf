@@ -1,0 +1,1 @@
+{"success": true, "data": [{"type": "correct", "user": {"id": 15, "name": "RumHam"}, "challenge_id": 54, "date": "2024-04-26T13:18:51.329352+00:00", "id": 288, "challenge": {"id": 54, "name": "sanitycheck", "value": 1, "category": "misc"}, "team": {"id": 9, "name": "n00bzAreUs"}}], "meta": {"count": 1}}

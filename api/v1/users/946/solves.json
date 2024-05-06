@@ -1,0 +1,1 @@
+{"success": true, "data": [{"type": "correct", "user": {"id": 946, "name": "isleof_man"}, "challenge_id": 66, "date": "2024-04-27T14:59:31.239559+00:00", "id": 2606, "challenge": {"id": 66, "name": "mov-cr3", "value": 404, "category": "pwn"}, "team": {"id": 569, "name": "isleof man"}}], "meta": {"count": 1}}

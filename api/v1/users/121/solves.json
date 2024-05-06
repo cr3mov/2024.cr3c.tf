@@ -1,0 +1,1 @@
+{"success": true, "data": [{"type": "correct", "user": {"id": 121, "name": "borozdinAC"}, "challenge_id": 54, "date": "2024-04-26T13:17:22.994977+00:00", "id": 267, "challenge": {"id": 54, "name": "sanitycheck", "value": 1, "category": "misc"}, "team": {"id": 75, "name": "solo leveling"}}], "meta": {"count": 1}}
